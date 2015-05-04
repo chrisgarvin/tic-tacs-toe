@@ -1,15 +1,15 @@
 //Initialize variables to use throughout JS
 
 var turn = 1;
-var r1c1;
-var r1c2;
-var r1c3;
-var r2c1;
-var r2c2;
-var r2c3;
-var r3c1;
-var r3c2;
-var r3c3;
+var r1c1 = "";
+var r1c2 = "";
+var r1c3 = "";
+var r2c1 = "";
+var r2c2 = "";
+var r2c3 = "";
+var r3c1 = "";
+var r3c2 = "";
+var r3c3 = "";
 
 //Add event listeners to each board position that %2 to keep track of which players
 //turn it is. Assign class based on color to set background to proper image, and
@@ -255,7 +255,15 @@ function checkWinner(){
 	resetGame();
 		document.getElementById("gameover").style.display = "none";
 });
-	} 
+	} else if(r1c1 != "" && r1c2 != "" && r1c3 != "" && r2c1 != "" && r2c2 != "" && r2c3 != ""
+		&& r3c1 != "" && r3c2 != "" && r3c3 != ""){
+		document.getElementById("winner").innerHTML = "it's a tie!";
+		document.getElementById("gameover").style.display = "block";
+		document.getElementById("gameover").addEventListener('click', function() {
+	resetGame();
+		document.getElementById("gameover").style.display = "none";
+});
+	}
 };
 
 //resetGame function to set all pieces back to default
@@ -271,6 +279,7 @@ function resetGame(){
 	document.getElementById('r3c2').className = "";
 	document.getElementById('r3c3').className = "";
 	document.getElementById("winner").innerHTML = "good luck!";
+	document.getElementById("gameover").style.display = "none";
 	r1c1 = "";
 	r1c2 = "";
 	r1c3 = "";
