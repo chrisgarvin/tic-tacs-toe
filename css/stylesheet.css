@@ -3,6 +3,8 @@
 	box-sizing: border-box;
 	text-decoration: none;
 	list-style: none;
+	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
 }
 
 ul {
@@ -17,10 +19,29 @@ body, html {
 }
 
 div#container {
-  max-width: 800px;
-  margin: 0 auto;
+	min-width: 800px;
+	max-width: 800px;
+	margin: 0 auto;
+	height: inherit;
+	min-height: 540px;
+}
+
+#content {
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+  -webkit-justify-content: center;
+  -webkit-height: 100vh;
+  -webkit-text-align: center;
+  -webkit-align-items: center;
+  -webkit-flex-wrap: nowrap;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   height: inherit;
-  min-height: 540px;
+  text-align: center;
+  flex-wrap: nowrap;
+  align-content: center;
+  align-items: center;
 }
 
 #player-one img, #player-two img {
@@ -33,32 +54,10 @@ div#container {
 	height: 25px;
 }
 
-#content {
-/*	display: -webkit-flex;
-  -webkit-flex-direction: column;
-  -webkit-justify-content: center;
-  -webkit-height: 100vh;
-  -webkit-text-align: center;*/
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  text-align: center;
-  height: inherit;
-  align-content: center;
-  align-items: center;
-  flex-wrap: nowrap;
-}
-#player-one {
-	/*width: 200px;
-	height: 200px;
-	border: solid black 1px;*/
+#player-one, #player-two {
+	width: 200px;
 }
 
-#player-two {
-	/*width:200px;
-	height:200px;
-	border: solid black 1px;*/
-}
 
 #gameboard {
 	background: url("../images/TicTacToe.png");
@@ -96,58 +95,7 @@ div#container {
 	position: relative;
 	top: -11px;
 }
-
-.white {
-	background: url("../images/white-tic.png");
-	background-size: 100px 100px;
-	-webkit-animation-name: rotate;
-    -webkit-animation-duration:1s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function:linear;
-    -moz-animation-name: rotate;
-    -moz-animation-duration:1s;
-    -moz-animation-iteration-count:infinite;
-    -moz-animation-timing-function:linear;
-}
-
-.orange {
-	background: url("../images/orange-tic.png");
-	background-size: 100px 100px;
-	-webkit-animation-name: rotate;
-    -webkit-animation-duration:1s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function:linear;
-    -moz-animation-name: rotate;
-    -moz-animation-duration:1s;
-    -moz-animation-iteration-count:infinite;
-    -moz-animation-timing-function:linear;
-}
-
-.red {
-	background: url("../images/red-tic.png");
-	background-size: 100px 100px;
-	-webkit-animation-name: rotate;
-    -webkit-animation-duration:1s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function:linear;
-    -moz-animation-name: rotate;
-    -moz-animation-duration:1s;
-    -moz-animation-iteration-count:infinite;
-    -moz-animation-timing-function:linear;
-}
-
-.green {
-	background: url("../images/green-tic.png");
-	background-size: 100px 100px;
-	-webkit-animation-name: rotate;
-    -webkit-animation-duration:1s;
-    -webkit-animation-iteration-count:infinite;
-    -webkit-animation-timing-function:linear;
-    -moz-animation-name: rotate;
-    -moz-animation-duration:1s;
-    -moz-animation-iteration-count:infinite;
-    -moz-animation-timing-function:linear;
-}	
+	
 
 @-webkit-keyframes rotate {
   from {-webkit-transform:rotate(0deg);}

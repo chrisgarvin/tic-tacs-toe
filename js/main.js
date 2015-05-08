@@ -124,12 +124,12 @@ ticTacsToe.controller("TicTacController", function(){
 		if(self.pieces.spaces[0].player == self.pieces.spaces[4].player && 
 				self.pieces.spaces[0].player == self.pieces.spaces[8].player &&
 				self.pieces.spaces[0].player != 0){
-				self.winner = "player " + self.pieces.spaces[i].player + " wins!";
+				self.winner = "player " + self.pieces.spaces[0].player + " wins!";
 			} 
 			else if(self.pieces.spaces[2].player == self.pieces.spaces[4].player && 
 				self.pieces.spaces[2].player == self.pieces.spaces[6].player &&
 				self.pieces.spaces[2].player != 0){
-				self.winner = "player " + self.pieces.spaces[i].player + " wins!";
+				self.winner = "player " + self.pieces.spaces[2].player + " wins!";
 			}
 			else if(self.turn == 10){
 				self.winner = "it's a tie!";
