@@ -143,6 +143,9 @@ document.getElementById('reset').addEventListener('click', function() {
 //automatically reset the game instead of continuing to play
 
 function checkWinner(){
+
+//Checks to see if green has won
+
 	if(r1c1 == "green" && r1c2 == "green" && r1c3 == "green"){
 		document.getElementById("winner").innerHTML = "green wins!";
 		document.getElementById("gameover").style.display = "block";
@@ -199,7 +202,11 @@ function checkWinner(){
 	resetGame();
 		document.getElementById("gameover").style.display = "none";
 });
-	} else if(r1c1 == "white" && r1c2 == "white" && r1c3 == "white"){
+	}
+
+// Checks to see if white has won
+
+	 else if(r1c1 == "white" && r1c2 == "white" && r1c3 == "white"){
 		document.getElementById("winner").innerHTML = "white wins!";
 		document.getElementById("gameover").style.display = "block";
 		document.getElementById("gameover").addEventListener('click', function() {
@@ -255,7 +262,11 @@ function checkWinner(){
 	resetGame();
 		document.getElementById("gameover").style.display = "none";
 });
-	} else if(r1c1 != "" && r1c2 != "" && r1c3 != "" && r2c1 != "" && r2c2 != "" && r2c3 != ""
+	} 
+
+//checks to see if it's a tie
+
+	else if(r1c1 != "" && r1c2 != "" && r1c3 != "" && r2c1 != "" && r2c2 != "" && r2c3 != ""
 		&& r3c1 != "" && r3c2 != "" && r3c3 != ""){
 		document.getElementById("winner").innerHTML = "it's a tie!";
 		document.getElementById("gameover").style.display = "block";

@@ -2,6 +2,12 @@
 	color: black;
 	box-sizing: border-box;
 	text-decoration: none;
+	list-style: none;
+}
+
+ul {
+	display: inline;
+	padding: 0px;
 }
 
 body, html {
@@ -17,17 +23,41 @@ div#container {
   min-height: 540px;
 }
 
+#player-one img, #player-two img {
+	width: 50px;
+	height: 50px;
+}
+
+.tictacs img {
+	width: 25px;
+	height: 25px;
+}
+
 #content {
-	display: -webkit-flex;
+/*	display: -webkit-flex;
   -webkit-flex-direction: column;
   -webkit-justify-content: center;
   -webkit-height: 100vh;
-  -webkit-text-align: center;
+  -webkit-text-align: center;*/
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   text-align: center;
   height: inherit;
+  align-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+#player-one {
+	/*width: 200px;
+	height: 200px;
+	border: solid black 1px;*/
+}
+
+#player-two {
+	/*width:200px;
+	height:200px;
+	border: solid black 1px;*/
 }
 
 #gameboard {
@@ -41,10 +71,69 @@ div#container {
 	margin: 0 auto;
 }
 
+.pieces {
+	width: 100px;
+	height: 100px;
+	border: solid lightgray 1px;
+	display: inline-block;
+}
+
+.pieces img {
+	width: 100px;
+	height: 100px;
+	-webkit-animation-name: rotate;
+    -webkit-animation-duration:1s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function:linear;
+    -moz-animation-name: rotate;
+    -moz-animation-duration:1s;
+    -moz-animation-iteration-count:infinite;
+    -moz-animation-timing-function:linear;
+}
+
 #winner {
 	color: white;
 	position: relative;
 	top: -11px;
+}
+
+.white {
+	background: url("../images/white-tic.png");
+	background-size: 100px 100px;
+	-webkit-animation-name: rotate;
+    -webkit-animation-duration:1s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function:linear;
+    -moz-animation-name: rotate;
+    -moz-animation-duration:1s;
+    -moz-animation-iteration-count:infinite;
+    -moz-animation-timing-function:linear;
+}
+
+.orange {
+	background: url("../images/orange-tic.png");
+	background-size: 100px 100px;
+	-webkit-animation-name: rotate;
+    -webkit-animation-duration:1s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function:linear;
+    -moz-animation-name: rotate;
+    -moz-animation-duration:1s;
+    -moz-animation-iteration-count:infinite;
+    -moz-animation-timing-function:linear;
+}
+
+.red {
+	background: url("../images/red-tic.png");
+	background-size: 100px 100px;
+	-webkit-animation-name: rotate;
+    -webkit-animation-duration:1s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function:linear;
+    -moz-animation-name: rotate;
+    -moz-animation-duration:1s;
+    -moz-animation-iteration-count:infinite;
+    -moz-animation-timing-function:linear;
 }
 
 .green {
@@ -68,19 +157,6 @@ div#container {
 @-moz-keyframes rotate {
   from {-moz-transform:rotate(0deg);}
   to {  -moz-transform:rotate(360deg);}
-}
-
-.white {
-	background: url("../images/white-tic.png");
-	background-size: 100px 100px;
-	-webkit-animation-name: rotate;
-    -webkit-animation-duration:1s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function:linear;
-    -moz-animation-name: rotate;
-    -moz-animation-duration:1s;
-    -moz-animation-iteration-count:infinite;
-    -moz-animation-timing-function:linear;
 }
 
 #reset {
