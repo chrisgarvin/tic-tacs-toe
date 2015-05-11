@@ -13,6 +13,9 @@ ticTacsToe.controller("TicTacController", function(){
 	self.playerTwoFlavor = "Pick your flavor.";
 	self.playerOneClass = "";
 	self.playerTwoClass = "";
+	self.colorBackground = "";
+	self.playerOneObject;
+	self.playerTwoObject;
 
 //Create tictacs objects
 
@@ -21,22 +24,26 @@ ticTacsToe.controller("TicTacController", function(){
 				{
 					type: "spearmint",
 					image: "images/green-tic.png",
-					alt: "green"
+					alt: "green",
+					bgcolor: "rgb(204,255,153)"
 				},
 				{
 					type: "orange",
 					image: "images/orange-tic.png",
-					alt: "orange"
+					alt: "orange",
+					bgcolor: "rgb(255,204,153)"
 				},
 				{
 					type: "wild cherry",
 					image: "images/red-tic.png",
-					alt: "red"
+					alt: "red",
+					bgcolor: "rgb(255,153,153)"
 				},
 				{
 					type: "freshmints",
 					image: "images/white-tic.png",
-					alt: "white"
+					alt: "white",
+					bgcolor: "rgb(224,224,224)"
 				}
 			
 		]
@@ -158,12 +165,14 @@ ticTacsToe.controller("TicTacController", function(){
 			self.turn++;
 			this.pieces.spaces[i].player = 1;
 			this.pieces.spaces[i].ticTacClass = self.playerOneClass;
+			self.colorBackground = self.playerTwoObject[0].bgcolor;
 			self.checkWinner();
 		} else if(this.pieces.spaces[i].ticTacClass == "" && self.winner == "good luck!" &&
 			self.playerOneClass != "" && self.playerTwoClass != "") {
 			self.turn++;
 			this.pieces.spaces[i].player = 2;
 			this.pieces.spaces[i].ticTacClass = self.playerTwoClass;
+			self.colorBackground = self.playerOneObject[0].bgcolor;
 			self.checkWinner();
 		}
 
