@@ -7,11 +7,6 @@
     -moz-box-sizing: border-box;
 }
 
-ul {
-	display: inline;
-	padding: 0px;
-}
-
 body, html {
 	background: white;
 	height: 100%;
@@ -44,6 +39,62 @@ div#container {
   align-items: center;
 }
 
+#tictactoe {
+	height:300px;
+	width: 340px;
+	color: black;
+	margin: 0 auto;
+	margin-top: 130px;
+}
+
+ul {
+	display: inline;
+	padding: 0px;
+}
+
+.white {
+	background: url("../images/white-tic.png");
+}
+
+.orange {
+	background: url("../images/orange-tic.png");
+}
+
+.red {
+	background: url("../images/red-tic.png");
+}
+
+.green {
+	background: url("../images/green-tic.png");
+}	
+
+.white, .green, .red, .orange {
+	-webkit-animation-name: rotate;
+    -webkit-animation-duration:1s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function:linear;
+    -moz-animation-name: rotate;
+    -moz-animation-duration:1s;
+    -moz-animation-iteration-count:infinite;
+    -moz-animation-timing-function:linear;
+    background-size: 100px 100px;
+}
+
+.icons {
+	-webkit-animation-name: none;
+    -webkit-animation-duration:1s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function:linear;
+    -moz-animation-name: none;
+    -moz-animation-duration:1s;
+    -moz-animation-iteration-count:infinite;
+    -moz-animation-timing-function:linear;
+    width: 50px;
+    height: 50px;
+    background-size: 50px 50px;
+    display: inline-block;
+}
+
 #player-one img, #player-two img {
 	width: 50px;
 	height: 50px;
@@ -73,21 +124,8 @@ div#container {
 .pieces {
 	width: 100px;
 	height: 100px;
-	border: solid lightgray 1px;
+	/*border: solid lightgray 1px;*/
 	display: inline-block;
-}
-
-.pieces img {
-	width: 100px;
-	height: 100px;
-	-webkit-animation-name: rotate;
-    -webkit-animation-duration:1s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function:linear;
-    -moz-animation-name: rotate;
-    -moz-animation-duration:1s;
-    -moz-animation-iteration-count:infinite;
-    -moz-animation-timing-function:linear;
 }
 
 #winner {
@@ -112,35 +150,5 @@ div#container {
 	top: 95px;
 	right: 3px;
 	color: rgba(1,153,51,0);
+	cursor: pointer;
 }
-
-#tictactoe {
-	height:300px;
-	width: 340px;
-	color: black;
-	margin: 0 auto;
-	margin-top: 130px;
-}
-
-#gameover {
-	display: none;
-	width: 360px;
-	height: 540px;
-	position: absolute;
-}
-
-#r1c1, #r1c2, #r1c3, #r2c1, #r2c2, #r2c3, #r3c1, #r3c2, #r3c3 {
-
-}
-
-#r2c1, #r2c2, #r2c3 {
-	border-bottom: thin solid black;
-	border-top: thin solid black;
-}
-
-#r1c2, #r2c2, #r3c2 {
-	border-left: thin solid black;
-	border-right: thin solid black;
-	background: cover;
-}
-

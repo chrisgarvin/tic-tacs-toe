@@ -4,15 +4,17 @@ ticTacsToe.controller("TicTacController", function(){
 	var self = this;
 	self.turn = 1;
 
+//Initializing variables
+
 	self.playerOneTurn = false;
 	self.playerTwoTurn = false;
 	self.winner = "good luck!";
-	self.playerOnePick = "";
-	self.playerTwoPick = "";
 	self.playerOneFlavor = "Pick your flavor.";
 	self.playerTwoFlavor = "Pick your flavor.";
 	self.playerOneClass = "";
 	self.playerTwoClass = "";
+
+//Create tictacs objects
 
 	self.players = {
 		tictacs: [
@@ -40,70 +42,135 @@ ticTacsToe.controller("TicTacController", function(){
 		]
 	}
 
+//Create games spaces objects
+
 	self.pieces = {
 		spaces: [
 				{
-					row: 1, column: 1 , image: "", player: 0
+					row: 1, column: 1, player: 0, ticTacClass: ""
 				},
 				{
-					row: 1, column: 2 , image: "", player: 0
+					row: 1, column: 2, player: 0, ticTacClass: ""
 				},
 				{
-					row: 1, column: 3 , image: "", player: 0
+					row: 1, column: 3, player: 0, ticTacClass: ""
 				},
 				{
-					row: 2, column: 1 , image: "", player: 0
+					row: 2, column: 1, player: 0, ticTacClass: ""
 				},
 				{
-					row: 2, column: 2 , image: "", player: 0
+					row: 2, column: 2, player: 0, ticTacClass: ""
 				},
 				{
-					row: 2, column: 3 , image: "", player: 0
+					row: 2, column: 3, player: 0, ticTacClass: ""
 				},
 				{
-					row: 3, column: 1 , image: "", player: 0
+					row: 3, column: 1, player: 0, ticTacClass: ""
 				},
 				{
-					row: 3, column: 2 , image: "", player: 0
+					row: 3, column: 2, player: 0, ticTacClass: ""
 				},
 				{
-					row: 3, column: 3 , image: "", player: 0
-				},
+					row: 3, column: 3, player: 0, ticTacClass: ""
+				}
 		]
 	}
 
+//Create newGame function in order to reset game by setting all variables/objects to default
+
+		self.newGame = function(){
+		self.playerOneClass = "";
+		self.playerTwoClass = "";
+		self.winner = "good luck!";
+		self.turn = 1;
+		self.playerOneTurn = false;
+		self.playerTwoTurn = false;
+		self.playerOneFlavor = "Pick your flavor.";
+		self.playerTwoFlavor = "Pick your flavor.";
+
+//Pushes objects back into tictacs that had previously been spliced
+
+		self.players.tictacs.push(self.playerOneObject[0]);
+		self.players.tictacs.push(self.playerTwoObject[0]);
+		self.pieces = {
+		spaces: [
+					{
+						row: 1, column: 1 , player: 0, ticTacClass: ""
+					},
+					{
+						row: 1, column: 2 , player: 0, ticTacClass: ""
+					},
+					{
+						row: 1, column: 3 , player: 0, ticTacClass: ""
+					},
+					{
+						row: 2, column: 1 , player: 0, ticTacClass: ""
+					},
+					{
+						row: 2, column: 2 , player: 0, ticTacClass: ""
+					},
+					{
+						row: 2, column: 3 , player: 0, ticTacClass: ""
+					},
+					{
+						row: 3, column: 1 , player: 0, ticTacClass: ""
+					},
+					{
+						row: 3, column: 2 , player: 0, ticTacClass: ""
+					},
+					{
+						row: 3, column: 3 , player: 0, ticTacClass: ""
+					}
+			]
+		}
+}
+
+//Create playerOne function to store player one data upon selection of tic tac and
+//splices selected tic tac
+
 	self.playerOne = function(i){
-		if(self.playerOnePick == ""){
+		if(self.playerOneTurn == false){
 		self.playerOneClass = this.players.tictacs[i].alt;
 		self.playerOneFlavor = this.players.tictacs[i].type;
-		self.playerOnePick = this.players.tictacs[i].image;
-		this.players.tictacs.splice(i, 1);
+		self.playerOneTurn = true;
+		self.playerOneObject = this.players.tictacs.splice(i, 1);
 	} 
-	}
+}
+
+//Create playerTwo function to store player two data upon selection of tic tac and
+//splices selected tic tac
 
 	self.playerTwo = function(i){
-		if(self.playerTwoPick == ""){
+		if(self.playerTwoTurn == false){
 			self.playerTwoClass = this.players.tictacs[i].alt;
 			self.playerTwoFlavor = this.players.tictacs[i].type;
-			self.playerTwoPick = this.players.tictacs[i].image;
-			this.players.tictacs.splice(i, 1);
+			self.playerTwoTurn = true;
+			self.playerTwoObject = this.players.tictacs.splice(i, 1);
 	}
 }
 
+//Create gameMove function that will make checks to verify that the move they are making is a
+//legal game move, and then checks for winners each move.
+
 	self.gameMove = function(i){
-		if(self.turn % 2 == 1 && this.pieces.spaces[i].image == "" && self.winner == "good luck!"){
+		if(self.turn % 2 == 1 && this.pieces.spaces[i].ticTacClass == "" && self.winner == "good luck!" &&
+			self.playerTwoClass != "" && self.playerOneClass != ""){
 			self.turn++;
-			this.pieces.spaces[i].image = self.playerOnePick;
 			this.pieces.spaces[i].player = 1;
+			this.pieces.spaces[i].ticTacClass = self.playerOneClass;
 			self.checkWinner();
-		} else if(this.pieces.spaces[i].image == "" && self.winner == "good luck!") {
+		} else if(this.pieces.spaces[i].ticTacClass == "" && self.winner == "good luck!" &&
+			self.playerOneClass != "" && self.playerTwoClass != "") {
 			self.turn++;
-			this.pieces.spaces[i].image = self.playerTwoPick;
 			this.pieces.spaces[i].player = 2;
+			this.pieces.spaces[i].ticTacClass = self.playerTwoClass;
 			self.checkWinner();
 		}
 
 	}
+
+//Create checkWinner function that will loop through rows/columns/diagnals to see if there is a 
+//game winner, or a tie game.
 
 	self.checkWinner = function(i){
 		for(var i = 0; i < self.pieces.spaces.length; i+=3){
@@ -111,7 +178,6 @@ ticTacsToe.controller("TicTacController", function(){
 				self.pieces.spaces[i].player == self.pieces.spaces[i+2].player &&
 				self.pieces.spaces[i].player != 0){
 				self.winner = "player " + self.pieces.spaces[i].player + " wins!";
-
 			}
 		}
 		for(var i = 0; i < 3; i++){
@@ -136,13 +202,5 @@ ticTacsToe.controller("TicTacController", function(){
 			}
 
 	}
-
-	self.resetGame = function(){
-		for(var i = 0; i < self.pieces.spaces.length; i++){
-			self.pieces.spaces[i].player = 0;
-			self.pieces.spaces[i].image = "";
-		}
-	}
-
 
 });

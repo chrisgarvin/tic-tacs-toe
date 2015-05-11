@@ -14,30 +14,27 @@
 	<div id="content">
 		<div id="player-one">
 		<h5>Player One: {{ticTacs.playerOneFlavor}}</h5>
-		<img ng-show="ticTacs.playerOnePick" ng-src="{{ticTacs.playerOnePick}}">
-		<ul ng-show="!ticTacs.playerOnePick" class="tictacs">
-        <li ng-click="ticTacs.playerOne($index)" ng-repeat="tictac in ticTacs.players.tictacs">
+		<span ng-show="ticTacs.playerOneClass" class="{{ticTacs.playerOneClass}} icons"></span>
+		<ul ng-show="!ticTacs.playerOneClass" class="tictacs">
+        <li ng-click="ticTacs.playerOne($index)" ng-repeat="tictac in ticTacs.players.tictacs track by $index">
           <img ng-src="{{tictac.image}}" alt="{{tictac.type}}">
           <h4>{{tictac.type}} <span ng-show="tictac.count > 0">({{tictac.count}})</span></h4>
         </li>
       </ul>
 		</div> <!-- end player-one div -->
 		<div id="gameboard">
-		<div id="gameover">
-		</div>
 			<h4 id="winner">{{ticTacs.winner}}</h4>
-			<a href onclick="return false;"><h2 ng-click="ticTacs.resetGame" id="reset">fresh game</h2></a>
+			<h2 ng-click="ticTacs.newGame();" id="reset">fresh game</h2>
 			<div id="tictactoe">
-			  	<span class="pieces" ng-click="showme = true; ticTacs.gameMove($index);" ng-repeat="piece in ticTacs.pieces.spaces track by $index">
-			  	<img ng-show="showme==true" ng-src="{{piece.image}}">
+			  	<span class="pieces {{piece.ticTacClass}}" ng-click="showme = true; ticTacs.gameMove($index);" ng-repeat="piece in ticTacs.pieces.spaces track by $index">
 				</span>
 			</div> <!-- end tictactoe div -->
 		</div> <!-- end gameboard div -->
 		<div id="player-two">
 		<h5>Player Two: {{ticTacs.playerTwoFlavor}}</h5>
-		<img ng-show="ticTacs.playerTwoPick" ng-src="{{ticTacs.playerTwoPick}}">
-		<ul ng-show="!ticTacs.playerTwoPick" class="tictacs">
-        <li ng-click="ticTacs.playerTwo($index)" ng-repeat="tictac in ticTacs.players.tictacs">
+		<span ng-show="ticTacs.playerTwoClass" class="{{ticTacs.playerTwoClass}} icons"></span>
+		<ul ng-show="!ticTacs.playerTwoClass" class="tictacs">
+        <li ng-click="ticTacs.playerTwo($index)" ng-repeat="tictac in ticTacs.players.tictacs track by $index">
           <img ng-src="{{tictac.image}}" alt="{{tictac.type}}">
           <h4>{{tictac.type}} <span ng-show="tictac.count > 0">({{tictac.count}})</span></h4>
         </li>
