@@ -50,6 +50,18 @@ body, html {
 	cursor: pointer;
 }
 
+#player-one-chat-window {
+	display: none;
+	width: 200px;
+	height: inherit;
+}
+
+#player-two-chat-window {
+	display: none;
+	width: 200px;
+	height: inherit;
+}
+
 div#container {
 	min-width: 800px;
 	max-width: 800px;
