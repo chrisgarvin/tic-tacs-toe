@@ -1,12 +1,11 @@
 * {
-  color: black;
-  box-sizing: border-box;
   text-decoration: none;
   list-style: none;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
-body, html {
+html, body {
   background: white;
   height: 100%;
 }
@@ -25,79 +24,23 @@ ul {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  min-height: 800px;
   height: inherit;
   text-align: center;
   flex-wrap: nowrap;
   align-content: center;
   align-items: center;
 }
-.messages {
-  height: 93%;
-  overflow-y: scroll;
-}
-.add-chat {
-  padding-bottom: 0;
-  margin-bottom: 0;
-  font-size: 10px;
-}
-.text-box {
-  width: 95%;
-}
-#player-one-chat {
-  position: relative;
-  z-index: 1;
-  float: left;
-  width: 10px;
-  height: 300px;
-  background: gray;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-  font-size: 10px;
-}
-
-#player-one-chat-window {
-  margin-left: 10px;
-  width: 200px;
-  height: inherit;
-  background: white;
-  border: solid black 1px;
-  border-radius: 5px 5px 5px 5px;
-}
-#playerOneAligned {
-  padding: 5px;
-  text-align: left;
-}
-#player-two-chat {
-  position: relative;
-  z-index: 1;
-  float: right;
-  width: 10px;
-  height: 300px;
-  background: gray;
-  border-radius: 5px 0 0 5px;
-  margin-left: 0;
-  cursor: pointer;
-  font-size: 10px;
-}
-#player-two-chat-window {
-	float: right;
-  margin-right: 10px;
-  width: 200px;
-  height: inherit;
-  background: white;
-  border: solid black 1px;
-  border-radius: 5px 5px 5px 5px;
-}
-#playerTwoAligned {
-  padding: 5px;
-  text-align: right;
-}
 #container {
+  position: relative;
   min-width: 800px;
   max-width: 800px;
   margin: 0 auto;
   height: inherit;
   min-height: 540px;
+  text-align: center;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
 }
 #content {
   display: -webkit-flex;
@@ -116,39 +59,220 @@ ul {
   align-content: center;
   align-items: center;
 }
-#winner {
-  color: white;
+#player-one, #player-two {
   position: relative;
-  top: -11px;
+  z-index: 0;
+  width: 200px;
 }
-#reset {
+.playerTurn {
+  margin: 10px;
+}
+.gameboard-container {
   position: relative;
-  top: 95px;
-  right: 3px;
-  color: rgba(1, 153, 51, 0);
-  cursor: pointer;
-}
-/*#gameboard:hover {
-	transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
-	transition: all 1.0s linear;
-}*/
-
-#tictactoe {
-  height: 300px;
-  width: 340px;
-  color: black;
   margin: 0 auto;
-  margin-top: 130px;
+  width: 360px;
+  height: 540px;
+  text-align: center;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transition: all 1.0s linear;
+  -webkit-perspective: 1000px;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: all 1.0s linear;
+}
+.flipBoard {
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  -webkit-transform-style: preserve-3d;
 }
 #gameboard {
-  background: url("../images/TicTacToe.png");
-  background-repeat: no-repeat;
-  background-size: 360px 540px;
+  position: absolute;
+  z-index: 0;
   width: 360px;
   min-height: 540px;
+  max-height: 540px;
   border-radius: 5px;
   border: solid gray 1px;
   margin: 0 auto;
+  -webkit-backface-visibility: hidden;
+  -webkit-transition: all 1.0s linear;
+  -webkit-perspective: 1000px;
+  backface-visibility: hidden;
+  transition: all 1.0s linear;
+  perspective: 1000px;
+}
+img#banner {
+  width: 100%;
+}
+#player-one-chat-window, #player-two-chat-window {
+  width: 200px;
+  height: inherit;
+  background: white;
+  border: solid black 1px;
+  -webkit-transform-style: preserve-3d;
+}
+#player-one-chat-window {
+  display: block;
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  box-sizing: border-box;
+  min-height: 540px;
+  max-height: 540px;
+  border-radius: 5px;
+  border: solid gray 1px;
+  min-width: 360px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 5px;
+}
+#player-two-chat-window {
+  display: block;
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  box-sizing: border-box;
+  min-height: 540px;
+  max-height: 540px;
+  border-radius: 5px;
+  border: solid gray 1px;
+  min-width: 360px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+#local-player-chat {
+  display: block;
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  box-sizing: border-box;
+  min-height: 540px;
+  max-height: 540px;
+  border-radius: 5px;
+  border: solid gray 1px;
+  min-width: 360px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  background-image: url("../images/TicTacChat.png");
+  -webkit-transform-style: preserve-3d;
+}
+#playerOneAligned, #playerTwoAligned {
+  padding: 5px;
+  margin: 5px;
+  width: 75%;
+  border-radius: 5px;
+}
+#playerOneAligned {
+  float: left;
+  text-align: left;
+  background-color: rgba(134, 143, 154, 0.5);
+}
+#playerTwoAligned {
+  float: right;
+  text-align: right;
+  color: white;
+  background-color: rgba(46, 136, 233, 0.6);
+}
+.messages {
+  height: 93%;
+  overflow-y: scroll;
+}
+.add-chat {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  font-size: 10px;
+}
+.text-box {
+  width: 95%;
+}
+#openchat {
+  font-size: 8px;
+  text-align: right;
+  font-weight: bold;
+  cursor: pointer;
+  width: 80px;
+  position: absolute;
+  right: 0;
+  border: solid gray;
+  border-width: 1px 1px 1px 0;
+  padding: 0 2px 0 2px;
+  border-radius: 0 4px 0 0;
+  -webkit-transform-style: preserve-3d;
+}
+#closechat {
+  position: absolute;
+  left: 0;
+  cursor: pointer;
+  text-align: left;
+  width: 80px;
+  font-size: 8px;
+  font-weight: bold;
+  border: solid gray;
+  border-width: 1px 0 1px 1px;
+  border-radius: 4px 0 0 0;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transition: all 1.0s linear;
+  -webkit-perspective: 1000px;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: all 1.0s linear;
+  padding: 0 2px 0 2px;
+}
+.opened {
+  -webkit-perspective: 1000px;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: all 1.0s linear;
+  -webkit-transform: matrix(.5, -1, 1, 0.1, -19, -46);
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transition: all 1.0s linear;
+  transform: matrix(.5, -1, 1, 0.1, -19, -46);
+}
+.closed {
+  -webkit-perspective: 1000px;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: all 1.0s linear;
+  -webkit-transform: matrix(.5, 1, -1, 0.1, 19, -46);
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transition: all 1.0s linear;
+  transform: matrix(.5, 1, -1, 0.1, 19, -46);
+}
+#winner {
+  color: white;
+  position: relative;
+  top: -212px;
+}
+#reset {
+  position: relative;
+  top: -106px;
+  right: 2px;
+  color: rgba(1, 153, 51, 0);
+  cursor: pointer;
+}
+.winner {
+  -webkit-transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+  -webkit-transition: all 1.0s linear;
+  -webkit-transition-delay: .3s;
+  -webkit-transition-duration: 2s;
+  -moz-transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+  -moz-transition: all 1.0s linear;
+  -moz-transition-delay: .3s;
+  -moz-transition-duration: 2s;
+  transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+  transition: all 1.0s linear;
+  transition-delay: .3s;
+  transition-duration: 2s;
+}
+#tictactoe {
+  position: relative;
+  z-index: -1;
+  height: 308px;
+  width: 300px;
+  color: black;
+  margin: 0 auto;
+  top: -95px;
+  background-image: url("../images/gameboard.png");
+  background-size: 300px 304px;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .white {
   background: url("../images/white-tic.png");
@@ -163,29 +287,31 @@ ul {
   background: url("../images/green-tic.png");
 }
 .white, .green, .red, .orange {
-  -webkit-animation-name: rotate;
+  -webkit-animation-name: slideDown;
   -webkit-animation-duration: 1s;
-  -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
-  -moz-animation-name: rotate;
+  -moz-animation-name: slideDown;
   -moz-animation-duration: 1s;
-  -moz-animation-iteration-count: infinite;
   -moz-animation-timing-function: linear;
   background-size: 100px 100px;
 }
 .icons {
   -webkit-animation-name: none;
-  -webkit-animation-duration: 1s;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
   -moz-animation-name: none;
-  -moz-animation-duration: 1s;
-  -moz-animation-iteration-count: infinite;
-  -moz-animation-timing-function: linear;
   width: 50px;
   height: 50px;
   background-size: 50px 50px;
   display: inline-block;
+}
+#tokens:hover, .icons:hover {
+  -webkit-animation-name: shake;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-name: shake;
+  -moz-animation-duration: 1s;
+  -moz-animation-timing-function: linear;
+  -moz-animation-iteration-count: infinite;
 }
 #player-one img, #player-two img {
   width: 50px;
@@ -195,16 +321,109 @@ ul {
   width: 25px;
   height: 25px;
 }
-#player-one, #player-two {
-  position: relative;
-  z-index: 0;
-  width: 200px;
-}
 .pieces {
   width: 100px;
   height: 100px;
-  /*border: solid lightgray 1px;*/
-	display: inline-block;
+  display: inline-block;
+  position: relative;
+  z-index: -1;
+  padding: 0;
+  margin: 0;
+}
+@-webkit-keyframes slideDown {
+  0% {
+    -webkit-transform: translateY(-500%);
+  }
+  50% {
+    -webkit-transform: translateY(8%);
+  }
+  65% {
+    -webkit-transform: translateY(-8%);
+    -webkit-transform: rotate(45deg);
+  }
+  80% {
+    -webkit-transform: translateY(4%);
+    -webkit-transform: rotate(0deg);
+  }
+  90% {
+    -webkit-transform: translateY(-4%);
+    -webkit-transform: rotate(45deg);
+  }
+  100% {
+    -webkit-transform: translateY(0%);
+    -webkit-transform: rotate(0deg);
+  }
+}
+@-moz-keyframes slideDown {
+  0% {
+    -moz-transform: translateY(-500%);
+  }
+  50% {
+    -moz-transform: translateY(8%);
+  }
+  65% {
+    -moz-transform: translateY(-8%);
+    -moz-transform: rotate(45deg);
+  }
+  80% {
+    -moz-transform: translateY(4%);
+    -moz-transform: rotate(0deg);
+  }
+  90% {
+    -moz-transform: translateY(-4%);
+    -moz-transform: rotate(45deg);
+  }
+  100% {
+    -moz-transform: translateY(0%);
+    -moz-transform: rotate(0deg);
+  }
+}
+@-webkit-keyframes shake {
+  0% {
+    -webkit-transform: translateY(0%);
+  }
+  50% {
+    -webkit-transform: translateY(8%);
+  }
+  65% {
+    -webkit-transform: translateY(-4%);
+    -webkit-transform: rotate(45deg);
+  }
+  80% {
+    -webkit-transform: translateY(4%);
+    -webkit-transform: rotate(0deg);
+  }
+  90% {
+    -webkit-transform: translateY(-2%);
+    -webkit-transform: rotate(45deg);
+  }
+  100% {
+    -webkit-transform: translateY(0%);
+    -webkit-transform: rotate(0deg);
+  }
+}
+@-moz-keyframes shake {
+  0% {
+    -moz-transform: translateY(-500%);
+  }
+  50% {
+    -moz-transform: translateY(8%);
+  }
+  65% {
+    -moz-transform: translateY(-4%);
+  }
+  80% {
+    -moz-transform: translateY(4%);
+    -moz-transform: rotate(25deg);
+  }
+  90% {
+    -moz-transform: translateY(-2%);
+    -moz-transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: translateY(0%);
+    -moz-transform: rotate(25deg);
+  }
 }
 @-webkit-keyframes rotate {
   from {
@@ -222,4 +441,102 @@ ul {
     -moz-transform: rotate(360deg);
   }
 }
-@media (max-width: 980px) and (orientation: portrait) {}
+@media (max-width: 980px) and (orientation: portrait) {
+  .white, .green, .red, .orange {
+    background-size: 100px 100px;
+    -webkit-animation-name: rotate;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-name: rotate;
+    -moz-animation-duration: 1s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+  }
+  .icons {
+    -webkit-animation-name: rotate;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: 1;
+    -moz-animation-name: rotate;
+    -moz-animation-duration: 1s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: 1;
+    width: 50px;
+    height: 50px;
+    background-size: 50px 50px;
+    display: inline-block;
+    margin: 0 auto;
+  }
+  .tictacs {
+    margin: 0 auto;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+  }
+  #gameboard {
+    margin: 5px auto;
+    max-height: 540px;
+  }
+  .tictacs li {
+    display: inline-block;
+    padding: 15px;
+  }
+  .tictacs h4 {
+    display: none;
+  }
+  #player-one, #player-two {
+    width: 100%;
+    max-height: 10%;
+  }
+  h5 {
+    margin: 5px;
+  }
+  #content {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+  #wrapper {
+    height: auto;
+  }
+  .playerTurn {
+    margin: 0;
+  }
+}
+@media (max-width: 980px) and (orientation: landscape) {
+  #container {
+    min-width: 0;
+  }
+  #winner {
+    top: -202px;
+  }
+  body, html {
+    height: inherit;
+  }
+  .white, .green, .red, .orange {
+    background-size: 100px 100px;
+    -webkit-animation-name: rotate;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-name: rotate;
+    -moz-animation-duration: 1s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+  }
+  .icons {
+    -webkit-animation-name: rotate;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: 1;
+    -moz-animation-name: rotate;
+    -moz-animation-duration: 1s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: 1;
+    width: 50px;
+    height: 50px;
+    background-size: 50px 50px;
+    display: inline-block;
+    margin: 0 auto;
+  }
+}
