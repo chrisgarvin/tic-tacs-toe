@@ -104,14 +104,7 @@ ul {
 img#banner {
   width: 100%;
 }
-#player-one-chat-window, #player-two-chat-window {
-  width: 200px;
-  height: inherit;
-  background: white;
-  border: solid black 1px;
-  -webkit-transform-style: preserve-3d;
-}
-#player-one-chat-window {
+#player-one-chat-window, #player-two-chat-window, #local-player-chat {
   display: block;
   -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
@@ -124,32 +117,8 @@ img#banner {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   border-radius: 5px;
-}
-#player-two-chat-window {
-  display: block;
-  -webkit-transform: rotateY(180deg);
-  transform: rotateY(180deg);
-  box-sizing: border-box;
-  min-height: 540px;
-  max-height: 540px;
-  border-radius: 5px;
-  border: solid gray 1px;
-  min-width: 360px;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
 }
 #local-player-chat {
-  display: block;
-  -webkit-transform: rotateY(180deg);
-  transform: rotateY(180deg);
-  box-sizing: border-box;
-  min-height: 540px;
-  max-height: 540px;
-  border-radius: 5px;
-  border: solid gray 1px;
-  min-width: 360px;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
   background-image: url("../images/TicTacChat.png");
   -webkit-transform-style: preserve-3d;
 }
@@ -215,24 +184,20 @@ img#banner {
   -webkit-transition: all 1.0s linear;
   padding: 0 2px 0 2px;
 }
-.opened {
+.opened, .closed {
   -webkit-perspective: 1000px;
   -webkit-transform-style: preserve-3d;
   -webkit-transition: all 1.0s linear;
-  -webkit-transform: matrix(.5, -1, 1, 0.1, -19, -46);
   perspective: 1000px;
   transform-style: preserve-3d;
   transition: all 1.0s linear;
+}
+.opened {
+  -webkit-transform: matrix(.5, -1, 1, 0.1, -19, -46);
   transform: matrix(.5, -1, 1, 0.1, -19, -46);
 }
 .closed {
-  -webkit-perspective: 1000px;
-  -webkit-transform-style: preserve-3d;
-  -webkit-transition: all 1.0s linear;
   -webkit-transform: matrix(.5, 1, -1, 0.1, 19, -46);
-  perspective: 1000px;
-  transform-style: preserve-3d;
-  transition: all 1.0s linear;
   transform: matrix(.5, 1, -1, 0.1, 19, -46);
 }
 #winner {
@@ -330,6 +295,9 @@ img#banner {
   padding: 0;
   margin: 0;
 }
+
+/*ANIMATIONS/KEYFRAMES*/
+
 @-webkit-keyframes slideDown {
   0% {
     -webkit-transform: translateY(-500%);
@@ -441,7 +409,16 @@ img#banner {
     -moz-transform: rotate(360deg);
   }
 }
+
+/*MEDIA QUERIES FOR MOBILE DISPLAY*/
+
 @media (max-width: 980px) and (orientation: portrait) {
+
+  #container {
+    min-width: 400px;
+    max-width: 400px;
+  }
+
   .white, .green, .red, .orange {
     background-size: 100px 100px;
     -webkit-animation-name: rotate;
@@ -507,8 +484,11 @@ img#banner {
   #container {
     min-width: 0;
   }
+  #content {
+    min-width: 800px;
+  }
   #winner {
-    top: -202px;
+    top: -211px;
   }
   body, html {
     height: inherit;

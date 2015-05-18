@@ -23,8 +23,16 @@ function TicTacController($firebaseObject, $firebaseArray) {
   self.gameData = getGameData();
   self.playerOneMessages = getPlayerOneMessages();
   self.playerTwoMessages = getPlayerTwoMessages();
+
+  //Local varibales that will determine if there are people playing from multiple
+  //devices or just locally.
+
   self.localPlayerOneTurn = false;
   self.localPlayerTwoTurn = false;
+
+  //Variable that will be modified to true when a winner occurs, which will
+  //add a winner animation class to the gameboard.
+
   self.winner = false;
 
   //Create getGameData function that will initialize a firebaseObject that will
@@ -329,6 +337,7 @@ function TicTacController($firebaseObject, $firebaseArray) {
     //Checks to see if the turn count is 10 with no winner, thus declaring a tie game.
     else if (self.gameData.turn == 10) {
       self.gameData.winner = "Tic Tac Tie!";
+      self.winner = true;
     }
 
   }
