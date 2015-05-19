@@ -63,48 +63,54 @@ On: 5/17/15 -->
             <!-- end tictactoe div -->
           </div>
           <!-- end gameboard div -->
-          <div id="player-one-chat-window" ng-show="ticTacCtrl.localPlayerOneTurn && !ticTacCtrl.localPlayerTwoTurn">
-            <div id="closechat" ng-click="chatOpened = !chatOpened" ng-class="{closed: chatOpened}">
-              close chat
+          <div class="player-one-chat-wrapper" ng-show="ticTacCtrl.localPlayerOneTurn && !ticTacCtrl.localPlayerTwoTurn">
+            <div id="player-one-chat-window" ng-show="ticTacCtrl.localPlayerOneTurn && !ticTacCtrl.localPlayerTwoTurn">
+              <div id="closechat" ng-click="chatOpened = !chatOpened" ng-class="{closed: chatOpened}">
+                close chat
+              </div>
+              <!-- end closechat div -->
+              <div class="messages">
+                <ul ng-repeat="messages in ticTacCtrl.playerOneMessages track by $index">
+                  <li id="{{ticTacCtrl.playerOneMessages[$index].id}}">
+                    <span>{{messages.message}}</span>
+                  </li>
+                </ul>
+              </div>
+              <!-- end messages div -->
             </div>
-            <!-- end closechat div -->
-            <div class="messages">
-              <ul ng-repeat="messages in ticTacCtrl.playerOneMessages track by $index">
-                <li id="{{ticTacCtrl.playerOneMessages[$index].id}}">
-                  <span>{{messages.message}}</span>
-                </li>
-              </ul>
-            </div>
-            <!-- end messages div -->
+            <!-- end player-one-chat-window -->
             <form class="add-chat" ng-submit="ticTacCtrl.addChat(playerOneMessage, 'playerOneAligned');
 					ticTacCtrl.clearPlayerOneChat(playerOneMessage); ticTacCtrl.playerOneWindow = !ticTacCtrl.playerOneWindow;
-					playerOneMessage=''">
+					playerOneMessage=''" ng-show="chatOpened">
               <input class="text-box" type="text" placeholder="type here... (type 'clear' to clear chat)" ng-model="playerOneMessage" ng-click="ticTacCtrl.playerOneWindow = !ticTacCtrl.playerOneWindow">
               <input type="submit" class="btn btn-add" value="send" style="display: none;">
             </form>
           </div>
-          <!-- end player-one-chat-window div -->
-          <div id="player-two-chat-window" ng-show="ticTacCtrl.localPlayerTwoTurn && !ticTacCtrl.localPlayerOneTurn">
-            <div id="closechat" ng-click="chatOpened = !chatOpened" ng-class="{closed: chatOpened}">
-              close chat
+          <!-- end player-one-chat-wrapper div -->
+          <div class="player-two-chat-wrapper" ng-show="ticTacCtrl.localPlayerTwoTurn && !ticTacCtrl.localPlayerOneTurn">
+            <div id="player-two-chat-window" ng-show="ticTacCtrl.localPlayerTwoTurn && !ticTacCtrl.localPlayerOneTurn">
+              <div id="closechat" ng-click="chatOpened = !chatOpened" ng-class="{closed: chatOpened}">
+                close chat
+              </div>
+              <!-- end closechat div -->
+              <div class="messages">
+                <ul ng-repeat="message in ticTacCtrl.playerTwoMessages track by $index">
+                  <li id="{{ticTacCtrl.playerTwoMessages[$index].id}}">
+                    <span>{{message.message}}</span>
+                  </li>
+                </ul>
+              </div>
+              <!-- end messages div -->
             </div>
-            <!-- end closechat div -->
-            <div class="messages">
-              <ul ng-repeat="message in ticTacCtrl.playerTwoMessages track by $index">
-                <li id="{{ticTacCtrl.playerTwoMessages[$index].id}}">
-                  <span>{{message.message}}</span>
-                </li>
-              </ul>
-            </div>
-            <!-- end messages div -->
+            <!-- player-two-chat-window -->
             <form class="add-chat" ng-submit="ticTacCtrl.addChat(playerTwoMessage, 'playerTwoAligned');
 					ticTacCtrl.clearPlayerTwoChat(playerTwoMessage); ticTacCtrl.playerTwoWindow = !ticTacCtrl.playerTwoWindow;
-					playerTwoMessage=''">
+					playerTwoMessage=''" ng-show="chatOpened">
               <input class="text-box" type="text" placeholder="type here... (type 'clear' to clear chat)" ng-model="playerTwoMessage" ng-click="ticTacCtrl.playerTwoWindow = !ticTacCtrl.playerTwoWindow">
               <input type="submit" class="btn btn-add" value="send" style="display: none;">
             </form>
           </div>
-          <!-- end player-two-chat-window div -->
+          <!-- end player-two-chat-wrapper div -->
           <div id="local-player-chat" ng-show="ticTacCtrl.localPlayerOneTurn && ticTacCtrl.localPlayerTwoTurn">
             <div id="closechat" ng-click="chatOpened = !chatOpened" ng-class="{closed: chatOpened}">close chat</div>
           </div>

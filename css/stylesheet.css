@@ -109,13 +109,30 @@ img#banner {
   -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
   box-sizing: border-box;
+  min-height: 520px;
+  max-height: 520px;
+  height: inherit;
+  /*border-radius: 5px;
+  border: solid gray 1px;*/
+  min-width: 360px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 5px;
+}
+#local-player-chat {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 5px;
+  border: solid gray 1px;
+}
+.player-one-chat-wrapper, .player-two-chat-wrapper {
+  display: block;
+  box-sizing: border-box;
   min-height: 540px;
   max-height: 540px;
   border-radius: 5px;
   border: solid gray 1px;
   min-width: 360px;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
   border-radius: 5px;
 }
 #local-player-chat {
@@ -144,12 +161,15 @@ img#banner {
   overflow-y: scroll;
 }
 .add-chat {
-  padding-bottom: 0;
-  margin-bottom: 0;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
   font-size: 10px;
+  width: 100%;
 }
 .text-box {
   width: 95%;
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 #openchat {
   font-size: 8px;
